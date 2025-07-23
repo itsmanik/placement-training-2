@@ -1,8 +1,9 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 int main() {
-    int num = 27364;
+    int num = 2025;
     int square = num * num;
     int length = 0;
     int temp = num;
@@ -10,14 +11,14 @@ int main() {
         length++;
         temp /= 10;
     }
+    temp = num;
     int secondPartLength = length - (length / 2);
-    int secondPart;
-    int place = 1;
-    while (secondPartLength != 0) {
-        int digit = num / 10;
-        secondPart = secondPart + (digit*place);
-        secondPartLength--;
-    }
-    cout << secondPart;
+    int firstPartLength = length - secondPartLength;
+    int firstPart = temp / pow(10, secondPartLength);
+    int power = pow(10, firstPartLength + 1);
+    temp = num;
+    int secondPart = temp % power;
+    int sum = firstPart + secondPart;
+    cout << firstPart + secondPart;
     return 0;
 }
